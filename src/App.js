@@ -17,7 +17,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     window
-      .fetch('../fakeData.json') // use fakeData if this API is not working
+      .fetch('https://api.covid19api.com/summary') // use fakeData if this API is not working
       .then((res) => res.json())
       .then((json) => {
         this.setState({ data: json });
