@@ -5,7 +5,7 @@ export class SearchErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
-    this.toggleError = this.toggleError.bind(this);
+    // TODO : ???
   }
 
   static getDerivedStateFromError(error) {
@@ -41,6 +41,5 @@ export class SearchErrorBoundary extends React.Component {
 }
 
 SearchErrorBoundary.propTypes = {
-  input: PropTypes.string,
-  toggleFlag: PropTypes.func,
+  // TODO : Do Type Checking
 };

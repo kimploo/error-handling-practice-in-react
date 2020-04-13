@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, Summary, Search, Detail, SummaryFallback } from './Components';
+import { Header, Summary, Search, Detail } from './Components';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,39 +11,26 @@ export default class App extends React.Component {
       input: null,
       searchErrorFlag: 1,
     };
-    this.handleSearch = this.handleSearch.bind(this); // comment out to know where error bubbles up
-    this.toggleFlag = this.toggleFlag.bind(this);
   }
 
   componentDidMount() {
-    window
-      .fetch('https://api.covid19api.com/summary') // use fakeData if this API is not working
-      .then((res) => res.json())
-      .then((json) => {
-        this.setState({ data: json });
-      })
-      .catch((error) => console.error(error));
-  }
+    // TODO : https://api.covid19api.com/summary 에서 JSON을 받아와서, setState하여 활용하세요.
+    // 잘못된 JSON이 날아오는 경우를 고려하여 에러 핸들링이 되어있어야 합니다.
+    // 서버 API가 작동하지 않는 경우 fakeData를 활용하세요.
+  } // 잘못된 JSON이 날아오는 경우를 고려하여 테스트 케이스를 작성합니다.
 
   handleSearch(event, input) {
-    try {
-      event.preventDefault();
-      const { data } = this.state;
-      const searchedData = data.Countries.filter(function (country) {
-        return country.Slug.includes(input);
-      });
-      this.setState({
-        searchedData,
-        input,
-        searchErrorFlag: searchedData.length,
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    const searchedData = null; // TODO : 원하는 결과만 화면에 랜더할 수 있도록 setState될 searchedData를 할당하세요.
+    this.setState({
+      searchedData,
+      input,
+      searchErrorFlag: searchedData.length,
+    });
+    // TODO : 이벤트 핸들러를 에러 핸들링 하세요.
   }
 
   toggleFlag() {
-    this.setState({ searchErrorFlag: 1 });
+    // TODO : toggleFlag 함수를 작성하세요. 어떤 기능을 하는지 스스로 확인하세요.
   }
 
   render() {
@@ -59,7 +46,7 @@ export default class App extends React.Component {
             TotalRecovered={data.Global.TotalRecovered}
           />
         ) : (
-          <SummaryFallback />
+          <div>loading...</div> // TODO : SummaryFallback.js를 생성하고, Fallback UI를 만들어보세요.
         )}
         <Search
           handleSearch={this.handleSearch}

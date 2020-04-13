@@ -26,15 +26,12 @@ export class Summary extends React.Component {
 }
 
 const isNumber = function (props, propName, componentName) {
-  if (typeof props[propName] !== 'number') {
-    return new Error(
-      `Invalid prop ${propName} passed to ${componentName}. Expected a valid number`
-    );
-  }
+  // TODO : prop-Types 커스텀 함수를 작성하세요.
+  // https://github.com/facebook/prop-types#usage
 };
 
 Summary.propTypes = {
-  TotalConfirmed: PropTypes.number,
-  TotalDeaths: PropTypes.number,
+  TotalConfirmed: isNumber,
+  TotalDeaths: isNumber,
   TotalRecovered: isNumber,
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { SearchErrorBoundary } from './SearchErrorBoundary';
 import { ErrorHere } from '../util/ErrorHere';
 
@@ -26,6 +25,7 @@ export class Search extends React.Component {
               handleSearch(event, input);
             }}
           >
+            {/* onSubmit 자리를 비우면 난이도 향상이 가능합니다. 에러 핸들링보다는 React 공부에 도움이 될 듯 합니다.*/}
             <input
               type="search"
               id="searchInput"
@@ -45,7 +45,5 @@ export class Search extends React.Component {
 }
 
 Search.propTypes = {
-  handleSearch: PropTypes.func,
-  searchErrorFlag: PropTypes.number,
-  toggleFlag: PropTypes.func,
+  // TODO : Do Type Checking
 };
