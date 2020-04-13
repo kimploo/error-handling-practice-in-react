@@ -67,6 +67,22 @@ header {
   border: 0;
 }
 
+#search button {
+  margin-left: 1em;
+}
+
+#search div#error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#search div#error button {
+  padding: 0.5rem 1rem;
+  max-width: 6rem;
+}
+
 #detail {
   min-width: 100%;
   padding-bottom: 2em;

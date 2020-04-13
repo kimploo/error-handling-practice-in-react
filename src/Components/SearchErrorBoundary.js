@@ -29,10 +29,10 @@ export class SearchErrorBoundary extends React.Component {
       const { input } = this.props;
       // You can render any custom fallback UI
       return (
-        <>
-          <h1>{`Oops, ${input} is not included on our contury list`} </h1>
+        <div id="error">
+          <h1>{`Oops, "${input}" is not included on our contury list`}</h1>
           <button onClick={this.toggleError}>Search Again</button>
-        </>
+        </div>
       );
     }
 
