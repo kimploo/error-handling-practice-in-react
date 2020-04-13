@@ -13,12 +13,10 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('cdm work');
     window
-      .fetch('../fakeData.json') // 여기서 날아오는 JSON 자체가 문제일 것.
+      .fetch('../fakeData.json')
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         this.setState({ data: json });
       })
       .catch((error) => console.error(error));
@@ -30,7 +28,7 @@ export default class App extends React.Component {
     const { data } = this.state;
     this.setState({
       searchedData: data.Countries.filter(function (country) {
-        return country.Slug.includes(input); // 다른 값을 지정
+        return country.Slug.includes(input);
       }),
     });
   }
@@ -56,7 +54,7 @@ export default class App extends React.Component {
         ) : data ? (
           <Detail Countries={data.Countries} />
         ) : (
-          <div>loading...</div>
+          <div id="detail">loading...</div>
         )}
       </>
     );

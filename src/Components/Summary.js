@@ -29,7 +29,7 @@ export class Summary extends React.Component {
 }
 
 const isNumber = function (props, propName, componentName) {
-  if (typeof props[propName] === 'number') {
+  if (typeof props[propName] !== 'number') {
     return new Error(
       `Invalid prop ${propName} passed to ${componentName}. Expected a valid number`
     );
@@ -39,5 +39,5 @@ const isNumber = function (props, propName, componentName) {
 Summary.propTypes = {
   TotalConfirmed: PropTypes.number,
   TotalDeaths: PropTypes.number,
-  TotalRecovered: PropTypes.number,
+  TotalRecovered: isNumber,
 };

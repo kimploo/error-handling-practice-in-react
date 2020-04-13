@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export function Detail({ Countries }) {
   return (
@@ -22,3 +23,7 @@ export function Detail({ Countries }) {
     </div>
   );
 }
+
+Detail.propTypes = {
+  Countries: PropTypes.array,
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class Search extends React.Component {
   constructor(props) {
@@ -8,13 +9,6 @@ export class Search extends React.Component {
       input: '',
     };
   }
-
-  handleChange(event) {
-    this.setState({
-      input: event.target.value,
-    });
-  }
-
   render() {
     const { input } = this.state;
     const { handleSearch } = this.props;
@@ -33,7 +27,7 @@ export class Search extends React.Component {
             id="searchInput"
             placeholder="search your location..."
             value={input}
-            onChange={this.handleChange.bind(this)}
+            onChange={(e) => this.setState({ input: e.target.value })}
             required
           />
           <button type="submit" id="searchButton">
@@ -44,3 +38,7 @@ export class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  handleSearch: PropTypes.func,
+};
