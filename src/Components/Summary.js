@@ -1,11 +1,8 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 export class Summary extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { TotalConfirmed, TotalDeaths, TotalRecovered } = this.props;
 

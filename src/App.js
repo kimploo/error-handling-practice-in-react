@@ -1,8 +1,6 @@
 import React from 'react';
 
 import { Header, Summary, Search, Detail, SummaryFallback } from './Components';
-import { ErrorHere } from './util/ErrorHere';
-import { SearchErrorBoundary } from './SearchErrorBoundary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,8 +9,10 @@ export default class App extends React.Component {
       data: null,
       searchedData: null,
       input: null,
+      searchErrorFlag: 1,
     };
     this.handleSearch = this.handleSearch.bind(this); // comment out to know where error bubbles up
+    this.toggleFlag = this.toggleFlag.bind(this);
   }
 
   componentDidMount() {
@@ -35,20 +35,19 @@ export default class App extends React.Component {
       this.setState({
         searchedData,
         input,
-        serachErrorFlag: searchedData.length,
+        searchErrorFlag: searchedData.length,
       });
     } catch (error) {
       console.error(error);
     }
   }
 
-  isSearchError() {
-    const { serachErrorFlag } = this.state;
-    return serachErrorFlag <= 0 ? true : false;
+  toggleFlag() {
+    this.setState({ searchErrorFlag: 1 });
   }
 
   render() {
-    const { data, searchedData, serachErrorFlag } = this.state;
+    const { data, searchedData, searchErrorFlag } = this.state;
 
     return (
       <>
@@ -62,10 +61,11 @@ export default class App extends React.Component {
         ) : (
           <SummaryFallback />
         )}
-        <SearchErrorBoundary>
-          <Search handleSearch={this.handleSearch} />
-          {this.isSearchError() ? <ErrorHere /> : null}
-        </SearchErrorBoundary>
+        <Search
+          handleSearch={this.handleSearch}
+          searchErrorFlag={searchErrorFlag}
+          toggleFlag={this.toggleFlag}
+        />
         {searchedData ? (
           <Detail Countries={searchedData}></Detail>
         ) : data ? (

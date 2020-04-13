@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class SearchErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
+    this.toggleError = this.toggleError.bind(this);
   }
 
   static getDerivedStateFromError(error) {
@@ -16,12 +18,29 @@ export class SearchErrorBoundary extends React.Component {
     console.error(error);
   }
 
+  toggleError() {
+    const { toggleFlag } = this.props;
+    toggleFlag();
+    this.setState({ hasError: false });
+  }
+
   render() {
     if (this.state.hasError) {
+      const { input } = this.props;
       // You can render any custom fallback UI
-      return <h1> Ooops </h1>;
+      return (
+        <>
+          <h1>{`Oops, ${input} is not included on our contury list`} </h1>
+          <button onClick={this.toggleError}>Search Again</button>
+        </>
+      );
     }
 
     return this.props.children;
   }
 }
+
+SearchErrorBoundary.propTypes = {
+  input: PropTypes.string,
+  toggleFlag: PropTypes.func,
+};

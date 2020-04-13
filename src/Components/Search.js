@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SearchErrorBoundary } from './SearchErrorBoundary';
+import { ErrorHere } from '../util/ErrorHere';
 
 export class Search extends React.Component {
   constructor(props) {
@@ -11,29 +13,32 @@ export class Search extends React.Component {
   }
   render() {
     const { input } = this.state;
-    const { handleSearch } = this.props;
+    const { handleSearch, searchErrorFlag, toggleFlag } = this.props;
 
     return (
       <div id="search">
-        <form
-          id="searchForm"
-          method="post"
-          onSubmit={(event) => {
-            handleSearch(event, input);
-          }}
-        >
-          <input
-            type="search"
-            id="searchInput"
-            placeholder="search your location..."
-            value={input}
-            onChange={(e) => this.setState({ input: e.target.value })}
-            required
-          />
-          <button type="submit" id="searchButton">
-            search
-          </button>
-        </form>
+        <SearchErrorBoundary input={input} toggleFlag={toggleFlag}>
+          {searchErrorFlag <= 0 ? <ErrorHere /> : null}
+          <form
+            id="searchForm"
+            method="post"
+            onSubmit={(event) => {
+              handleSearch(event, input);
+            }}
+          >
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="search your location..."
+              value={input}
+              onChange={(e) => this.setState({ input: e.target.value })}
+              required
+            />
+            <button type="submit" id="searchButton">
+              search
+            </button>
+          </form>
+        </SearchErrorBoundary>
       </div>
     );
   }
@@ -41,4 +46,6 @@ export class Search extends React.Component {
 
 Search.propTypes = {
   handleSearch: PropTypes.func,
+  searchErrorFlag: PropTypes.number,
+  toggleFlag: PropTypes.func,
 };
