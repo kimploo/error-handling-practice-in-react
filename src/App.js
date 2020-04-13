@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { Header, Summary, Search, Detail, SummaryFallback } from './Components';
+import { ErrorHere } from './util/ErrorHere';
+import { SearchErrorBoundary } from './SearchErrorBoundary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -8,13 +10,14 @@ export default class App extends React.Component {
     this.state = {
       data: null,
       searchedData: null,
+      input: null,
     };
-    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this); // comment out to know where error bubbles up
   }
 
   componentDidMount() {
     window
-      .fetch('../fakeData.json')
+      .fetch('../fakeData.json') // use fakeData if this API is not working
       .then((res) => res.json())
       .then((json) => {
         this.setState({ data: json });
@@ -23,18 +26,29 @@ export default class App extends React.Component {
   }
 
   handleSearch(event, input) {
-    event.preventDefault();
-    console.log(input);
-    const { data } = this.state;
-    this.setState({
-      searchedData: data.Countries.filter(function (country) {
+    try {
+      event.preventDefault();
+      const { data } = this.state;
+      const searchedData = data.Countries.filter(function (country) {
         return country.Slug.includes(input);
-      }),
-    });
+      });
+      this.setState({
+        searchedData,
+        input,
+        serachErrorFlag: searchedData.length,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  isSearchError() {
+    const { serachErrorFlag } = this.state;
+    return serachErrorFlag <= 0 ? true : false;
   }
 
   render() {
-    const { data, searchedData } = this.state;
+    const { data, searchedData, serachErrorFlag } = this.state;
 
     return (
       <>
@@ -48,7 +62,10 @@ export default class App extends React.Component {
         ) : (
           <SummaryFallback />
         )}
-        <Search handleSearch={this.handleSearch} />
+        <SearchErrorBoundary>
+          <Search handleSearch={this.handleSearch} />
+          {this.isSearchError() ? <ErrorHere /> : null}
+        </SearchErrorBoundary>
         {searchedData ? (
           <Detail Countries={searchedData}></Detail>
         ) : data ? (

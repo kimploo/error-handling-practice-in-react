@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { ErrorBoundary } from './ErrorBoundary';
+import { GlobalErrorBoundary } from './GlobalErrorBoundary';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ErrorBoundary>
+    <GlobalErrorBoundary>
       <App />
-    </ErrorBoundary>
+    </GlobalErrorBoundary>
   </React.StrictMode>,
   document.getElementById('main')
 );
