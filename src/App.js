@@ -7,7 +7,9 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       data: null,
+      searchedData: null,
     };
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -22,12 +24,23 @@ export default class App extends React.Component {
       .catch((error) => console.error(error));
   }
 
-  render() {
+  handleSearch(event, input) {
+    event.preventDefault();
+    console.log(input);
     const { data } = this.state;
+    this.setState({
+      searchedData: data.Countries.filter(function (country) {
+        return country.Slug.includes(input); // 다른 값을 지정
+      }),
+    });
+  }
+
+  render() {
+    const { data, searchedData } = this.state;
 
     return (
       <>
-        <Header></Header>
+        <Header />
         {data ? (
           <Summary
             TotalConfirmed={data.Global.TotalConfirmed}
@@ -37,8 +50,14 @@ export default class App extends React.Component {
         ) : (
           <SummaryFallback />
         )}
-        <Search></Search>
-        <Detail></Detail>
+        <Search handleSearch={this.handleSearch} />
+        {searchedData ? (
+          <Detail Countries={searchedData}></Detail>
+        ) : data ? (
+          <Detail Countries={data.Countries} />
+        ) : (
+          <div>loading...</div>
+        )}
       </>
     );
   }

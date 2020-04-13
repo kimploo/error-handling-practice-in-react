@@ -1,5 +1,5 @@
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,8 +85,13 @@ header {
 }
 
 #detail div span {
+  min-width: 100px;
+  text-align: center;
   border-bottom: 1px solid;
   border-color: black;
-  background-color: whitesmoke;
   padding: 0.5em;
+}
+
+#detail div span.countryName {
+  min-width: 250px;
 }
