@@ -6,7 +6,7 @@ Reference URL : [https://github.com/kimploo/error-handling-practice-in-react/tre
 
 ### Sprint Intro
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3a4e30a9-7901-471d-be62-ddcacbb8067b/Peek_2020-04-14_14-28.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3a4e30a9-7901-471d-be62-ddcacbb8067b/Peek_2020-04-14_14-28.gif)
+![](https://hongshik-public-photos.s3.ap-northeast-2.amazonaws.com/my-github-repos/error-handling-practice-in-react/sprint-feature.gif)
 
 여러분과 같은 이머시브 코스 수강생이 사이드 프로젝트로 야심차게 준비했던 코로나 바이러스 대시보드가 완성되지 못한 채로 마무리가 되었습니다. 우리는 이 프로젝트를 완성시키고, 어떤 에러가 있었는지 찾기 위해서 지금까지 배운 에러 핸들링 기술을 활용합니다. 또한 유지보수가 용이하게 에러가 발생할 수 있는 곳을 찾아 예외 처리가 충분히 되어있는 상태로 만들어야 합니다.
 
@@ -61,13 +61,14 @@ Reference URL : [https://github.com/kimploo/error-handling-practice-in-react/tre
 
   좋은 예시 : 레딧 안내 및 경고창
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a105dcb-48cd-4ebf-bed4-8354833fe783/Screenshot_from_2020-04-14_14-18-36.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0a105dcb-48cd-4ebf-bed4-8354833fe783/Screenshot_from_2020-04-14_14-18-36.png)
+  ![](https://hongshik-public-photos.s3.ap-northeast-2.amazonaws.com/my-github-repos/error-handling-practice-in-react/reddit-popup.png)
 
 - [https://covid19api.com/](https://covid19api.com/) 의 API 문서를 참고하여, 국가 검색 시 더 구체적인 정보를 제공하세요. 다른 endpoint나 [다른 API](https://covid-19-apis.postman.com/)를 활용하셔도 좋습니다.
 
   좋은 예시 : [https://coronavirus.jhu.edu/map.html](https://coronavirus.jhu.edu/map.html)
 
-  ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ce950c5-16da-4242-b329-d141fdb3c524/Screenshot_from_2020-04-14_14-01-03.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5ce950c5-16da-4242-b329-d141fdb3c524/Screenshot_from_2020-04-14_14-01-03.png)
+  ![](https://hongshik-public-photos.s3.ap-northeast-2.amazonaws.com/my-github-repos/error-handling-practice-in-react/covid-19-jhu-example.png
+)
 
 ### Nightmare
 
