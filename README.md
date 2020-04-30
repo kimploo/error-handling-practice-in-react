@@ -34,7 +34,21 @@ Reference URL : [https://github.com/kimploo/error-handling-practice-in-react/tre
 
 프로젝트 곳곳에 TODO가 무엇을 해야 하는지 구체적으로 적혀있습니다. 배웠던 내용을 인지하고, 그에 맞게 에러 핸들링을 해주세요. TODO의 우선순위를 정하기 위해서, 스프린트를 이해하고, 무엇부터 개선해야 할지 고민해보세요. 어떤 기능을 먼저 작성해야 할지 짧게 고민하시는 것도 좋습니다.
 
-- 순서를 수강생에게 안내해야 한다면...
+- Type Checking
+
+  컴포넌트 제작 시에, 미리 어떤 타입이 들어올지 고민을 하고 시작을 하는 것이 좋습니다. `props` 의 타입에 따라서 사용되어야 하는 메소드가 달라지고, 에러가 발생할 수 있기 때문입니다.
+
+- Conditional Checking
+
+  비동기적인 코드와 함께 물 흐르듯 웹 어플리케이션이 작동하기 위해서는 Conditional Rendering을 적극적으로 활용하는 것이 좋습니다. 이는 에러 핸들링을 할 때도 활용할 수 있습니다. `App.js`에서 어떻게 Conditional Rendering을 하고 있는지 확인하고, 다른 곳에서도 활용해보세요.
+
+- Error Boundary
+
+  어디에 `Error Boundary`를 사용해야 할지 스프린트 곳곳에 힌트가 있습니다. 효율적으로 `Error Boundary`를 지정하고 활용하세요.
+
+- Basic JS & React Error Handling
+
+  위 모든 에러 핸들링 기술을 활용하고 나서도, 에러 핸들링이 되지 않는 곳이 남아있습니다. 어디인지 찾아서 에러 핸들링을 적용하세요. 핸들링 된 에러를 확인하다보면, 곳곳에 나사가 빠져있는 코드를 발견할 수 있습니다. 이 역시 개선해야 코드가 완벽하게 작동할 것입니다. `this binding`에 대해서 찾아보시는 것은 어떨까요?
 
 **3. Do More Error Handling**
 
