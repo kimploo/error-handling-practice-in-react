@@ -1,0 +1,113 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header {
+  background: whitesmoke;
+  text-align: center;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+  background: whitesmoke;
+}
+
+#summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 18px;
+  padding: 10px;
+  border: 0;
+}
+
+#summary .summaryInfo {
+  color: black;
+  text-align: center;
+  min-width: 150px;
+  margin: 0.5em 1em;
+  padding: 1em 2em;
+  border: 0;
+}
+
+#summary .summaryInfo div {
+  padding: 10px;
+}
+
+#summary .summaryInfo .divLabel {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#summary .summaryInfo .divValue {
+  font-size: 1.7em;
+  padding: 10px;
+}
+
+#search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: whitesmoke;
+  padding: 2rem 4rem;
+  border: 0;
+}
+
+#search input {
+  background: white;
+  padding: 0.5rem;
+  border: 0;
+}
+
+#search button {
+  margin-left: 1em;
+}
+
+#search div#error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#search div#error button {
+  padding: 0.5rem 1rem;
+  max-width: 6rem;
+}
+
+#detail {
+  min-width: 100%;
+  padding-bottom: 2em;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+#detail div {
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#detail div span {
+  min-width: 100px;
+  text-align: center;
+  border-bottom: 1px solid;
+  border-color: black;
+  padding: 0.5em;
+}
+
+#detail div span.countryName {
+  min-width: 250px;
+}
